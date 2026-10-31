@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f2eb;
+  --foreground: #172521;
 }
 
 @theme inline {
@@ -12,15 +12,262 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.ask-shell {
+  width: min(100% - 2rem, 54rem);
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
+}
+
+.site-header {
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #497568;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.site-header h1 {
+  margin: 0.4rem 0 1rem;
+  font-family: Georgia, serif;
+  font-size: clamp(2.8rem, 9vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.disclaimer {
+  margin: 0 auto;
+  max-width: 38rem;
+  color: #53645e;
+  line-height: 1.7;
+}
+
+.ask-panel {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #dce2d9;
+  border-radius: 1.2rem;
+  background: #fffefa;
+  box-shadow: 0 1.5rem 4rem rgb(23 37 33 / 7%);
+}
+
+.ask-panel > h2,
+.answer-section > h2,
+.cards-section > h2 {
+  margin: 0 0 1.25rem;
+  font-family: Georgia, serif;
+  font-weight: 500;
+}
+
+.ask-panel form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ask-panel label {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.ask-panel textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #c8d3cb;
+  border-radius: 0.7rem;
+  background: white;
+  padding: 0.9rem 1rem;
+  color: var(--foreground);
+  line-height: 1.55;
+}
+
+.ask-panel textarea:focus-visible,
+.ask-panel button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #8cae9e;
+  outline-offset: 3px;
+}
+
+.ask-panel button {
+  justify-self: start;
+  border: 0;
+  border-radius: 999px;
+  background: #1d5141;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ask-panel button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.loading-message,
+.error-message {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.6rem;
+}
+
+.loading-message {
+  background: #edf4ef;
+}
+
+.error-message {
+  background: #fff0ec;
+  color: #822d1d;
+}
+
+.answer-section {
+  margin-top: 2rem;
+  border-top: 1px solid #e2e6df;
+  padding-top: 1.5rem;
+}
+
+.answer-text {
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+
+.cards-section {
+  margin-top: 2rem;
+}
+
+.passage-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.passage-card {
+  overflow: hidden;
+  border: 1px solid #d8e1da;
+  border-radius: 0.9rem;
+  background: white;
+}
+
+.weak-grade-status {
+  margin: 0;
+  background: #fff0ec;
+  color: #822d1d;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+}
+
+.passage-card-header,
+.passage-text-grid,
+.grade-list,
+.no-grade {
+  margin: 0;
+  padding: 1rem 1.15rem;
+}
+
+.passage-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-bottom: 1px solid #e6ebe6;
+}
+
+.passage-card-header h3,
+.passage-card-header p {
+  margin: 0;
+}
+
+.passage-card-header a {
+  color: #1d5141;
+  text-underline-offset: 0.2em;
+}
+
+.passage-card-header p,
+.narrator {
+  color: #63736b;
+  font-size: 0.88rem;
+}
+
+.passage-text-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.arabic-text {
+  margin: 0;
+  color: #173c32;
+  font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 2.1;
+  text-align: right;
+}
+
+.translation-block p {
+  margin-top: 0;
+  line-height: 1.75;
+}
+
+.translation-label {
+  color: #53645e;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.narrator {
+  margin-bottom: 0;
+}
+
+.grade-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid #e6ebe6;
+  list-style: none;
+}
+
+.grade-list li {
+  border-radius: 999px;
+  background: #eef3ef;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+}
+
+.no-grade {
+  border-top: 1px solid #e6ebe6;
+  color: #63736b;
+  font-size: 0.88rem;
+}
+
+.site-footer {
+  padding: 1.5rem 0 0;
+  color: #53645e;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 38rem) {
+  .passage-text-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ask-shell {
+    padding-top: 2rem;
+  }
 }
